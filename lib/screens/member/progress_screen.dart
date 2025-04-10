@@ -270,30 +270,36 @@ class _ProgressScreenState extends State<ProgressScreen>
           // Exercise Selector
           Row(
             children: [
-              const Text(
-                'Exercise: ',
-                style: TextStyle(color: Colors.grey, fontSize: 16),
-              ),
-              const SizedBox(width: 8),
-              _buildExerciseSelector(),
-              IconButton(
-                icon: const Icon(
-                  Icons.add_circle_outline,
-                  color: Colors.white,
-                  size: 20,
+              Expanded(
+                flex: 2,
+                child: const Text(
+                  'Exercise: ',
+                  style: TextStyle(color: Colors.grey, fontSize: 16),
                 ),
-                onPressed: _addExercise,
-                tooltip: 'Add Exercise',
               ),
-              if (_exercises.isNotEmpty)
-                IconButton(
+              Expanded(flex: 3, child: _buildExerciseSelector()),
+              Expanded(
+                child: IconButton(
                   icon: const Icon(
-                    Icons.remove_circle_outline,
-                    color: Colors.red,
+                    Icons.add_circle_outline,
+                    color: Colors.white,
                     size: 20,
                   ),
-                  onPressed: () => _removeExercise(_selectedExercise),
-                  tooltip: 'Remove Exercise',
+                  onPressed: _addExercise,
+                  tooltip: 'Add Exercise',
+                ),
+              ),
+              if (_exercises.isNotEmpty)
+                Expanded(
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.remove_circle_outline,
+                      color: Colors.red,
+                      size: 20,
+                    ),
+                    onPressed: () => _removeExercise(_selectedExercise),
+                    tooltip: 'Remove Exercise',
+                  ),
                 ),
             ],
           ),

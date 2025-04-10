@@ -39,7 +39,10 @@ class CustomButton extends StatelessWidget {
         ),
         child:
             isLoading
-                ? const CircularProgressIndicator(color: Colors.white)
+                ? AspectRatio(
+                  aspectRatio: 1,
+                  child: const CircularProgressIndicator(color: Colors.white),
+                )
                 : Text(
                   text,
                   style: TextStyle(
